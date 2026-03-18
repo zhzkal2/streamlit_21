@@ -1,9 +1,13 @@
+import os
 import streamlit as st
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
+
+if "OPENAI_API_KEY" in st.secrets:
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 # --- 専門家ごとのシステムメッセージ ---
 EXPERT_PROMPTS = {
